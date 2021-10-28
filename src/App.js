@@ -4,16 +4,20 @@ import { Balance } from './components/Balance';
 import { Header } from './components/Header';
 import { IncomeExpenses } from './components/IncomeExpenses';
 import { TransactionList } from './components/TransactionList';
+import { GlobalProvider } from './context/GlobalState';
 
 function App() {
+  console.log('Inside App.js')
   return (
-    <div className="App">
-      <Header/>
-      <Balance/>
-      <IncomeExpenses />
-      <TransactionList/>
-      <AddTransaction/>
-    </div>
+    <GlobalProvider>
+      <div className="App">
+        <Header/>
+        <Balance/>
+        <IncomeExpenses />
+        <TransactionList/>
+        <AddTransaction/>
+      </div>
+    </GlobalProvider>
   );
 }
 

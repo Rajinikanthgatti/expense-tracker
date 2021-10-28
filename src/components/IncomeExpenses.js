@@ -1,17 +1,32 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
+import { GlobalContext } from '../context/GlobalState'
 
 export const IncomeExpenses = () => {
+
+    const {transactions} = useContext(GlobalContext)
+
+    const amounts = transactions.map(transaction => transaction.amount);
+
+    const income = amounts
+        .filter(transaction => (transaction > 0))
+        .reduce((prev, curr) => (prev += curr), 0)
+        .toFixed(2)
+    const expense = (amounts
+        .filter(transaction => transaction < 0)
+        .reduce((prev, curr) => (prev += curr), 0) * -1)
+        .toFixed(2)
+
     return (
         <IncomeExprensesStyled>
             <div className="inc-exprenses-container">
                 <div className="money-plus-con">
                     <h4 className="title">Income</h4>
-                    <h2 id="money-plus" className="money plus">$500</h2>
+                    <h2 id="money-plus" className="money plus">${income}</h2>
                 </div>
                 <div className="money-minus-con">
                     <h4 className="title">Expense</h4>
-                    <h2 id="money-minus" className="money minus">-$240</h2>
+                    <h2 id="money-minus" className="money minus">-${expense}</h2>
                 </div>
             </div>
         </IncomeExprensesStyled>

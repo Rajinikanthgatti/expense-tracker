@@ -57,6 +57,7 @@ body {
   align-items: center;
 }
 .delete-btn{
+  cursor: pointer;
   position: absolute;
   left: 0;
   top: 50%;
@@ -114,4 +115,13 @@ input[type='text'], input[type='number']{
   padding: 10px;
   border-radius: 2em;
   width: 100%;
+}
+.no-trans{
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 300px) and (max-width: 400px) {
+  .container, .trans-con, .add-trans-con{
+    margin: 2em;
+  }
 }
